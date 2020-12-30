@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Dashboard</title>
+
+</head>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-dark bg-dark">
+          <a class="navbar-brand" href="#">Dashboard </a>
+          <a href="#" class="badge badge-primary">{{profession}}</a>
+          <a class="navbar-brand my-sm-0" href="#">{{name}} </a>
+        </nav>
+        <div style="float:right">
+          <form align="right" name="form1" method="post" action="/logout/">{% csrf_token %}
+            <label class="logoutLblPos">
+            <input name="submit2" type="submit" id="submit2" value="log out">
+            </label>
+          </form>
+          </div>
+        <br>
+        
+    {% if profession == "TEACHER" %}
+        
+    
+    {%elif profession == "STUDENT" %}
+    <h2>Project List for {{name}}</h2>
+        {% for prj in projects%}
+        <div class="card-deck">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Project {{prj.Projects.project_name}}</h5>
+              <p class="card-text">{{ prj.Projects.project_detail }}</p>
+              <p class="card-text">Date & Time of submission: <strong>{{ prj.Projects.date_of_submission }}</strong></p>
+              {% if prj.project_status == "UNATTEMPTED" or prj.project_status == "UNAPPROVED" %}
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#{{prj.Projects.project_name}}">
+                Submit
+              </button>
+              <!-- Modal -->
+
+              <form action=/submit/ method="post"> {% csrf_token %}
+              <div class="modal fade" id="{{prj.Projects.project_name}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Submit {{prj.Projects.project_name}}</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p>URL should be in this format: <strong>https://www.google.com</strong></p>
+                      <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroup-sizing-sm">Enter URL</span>
+                        </div>
+                        <input type="hidden" name = "pr_id" value={{prj.id}}>
+                        
+                        <input type="url" class="form-control" name = "link" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </form>
+              {% endif %}
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">{{ prj.project_status}}</small>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+
+
+
+    </div>
+
+    
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

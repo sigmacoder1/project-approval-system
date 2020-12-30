@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Project Approval System</title>
+
+</head>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'base' %}">Project Approval System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'base' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li>
+              <a class="nav-link" href="{% url 'login' %}">Log In <span class="sr-only">(current)</span></a>
+            </li>
+            <li>
+              <a class="nav-link" href="{% url 'signup' %}">Signup <span class="sr-only">(current)</span></a>
+            </li>
+            <li>
+              <a class="nav-link" href="{% url 'aboutus' %}">About Us <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    
+    <div class="jumbotron">
+      <h1 class="display-4">Welcome to Project Approval System</h1>
+      <p class="lead">This is a college Project developed by <a href="https://www.linkedin.com/in/mr-ayush-raj/" target="blank" >Ayush Raj</a>
+      </p>
+      <hr class="my-4">
+      <p>It is uses Django powered backend. The frontend work is done in HTML, CSS, JAVASCRIPT and Bootstrap 4.</p>
+      <p class="lead">
+        <a class="btn btn-secondary  btn-sm" href="https://www.instagram.com/mr_ayush_raj/" target="blank" role="button">Follow me on Instagram</a>
+        <a class="btn btn-primary  btn-sm" href="https://www.linkedin.com/in/mr-ayush-raj/" target="blank" role="button">Connect on LinkedIn</a>
+      </p>
+    </div>
+    
+
+
+    {% block aboutus %}
+
+    <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <div class="card" style="width: 14rem;">
+              <div class="card-body">
+                <h5 class="card-title">Log In</h5>
+                <p class="card-text">I am a registered Student/Teacher.</p>
+                <a href="{% url 'login' %}" class="btn btn-primary">Sign In</a>
+              </div>
+            </div>
+            {% block signin %}
+            {% endblock %}
+          </div>
+
+          <div class="col-sm">
+            <div class="card" style="width: 14rem;">
+              <div class="card-body">
+                <h5 class="card-title">Sign Up</h5>
+                <p class="card-text">I want to register as a Student or Teacher.</p>
+                <a href="{% url 'signup' %}" class="btn btn-primary">Sign Up</a>
+              </div>
+            </div>
+            {% block signup %}
+            {% endblock %}
+          </div>
+        </div>
+      </div>
+
+
+      {% endblock %}
+      <br><br>
+
+      <div class="jumbotron">
+        <h1 class="display-4">You've reached the end of the page</h1>
+        
+      </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

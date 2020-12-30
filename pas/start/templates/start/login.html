@@ -1,0 +1,30 @@
+{% extends 'start/base.html' %}
+{% block signin %}
+    
+<title>Login</title>
+
+    <form action="/login/" method = "POST">
+      {% csrf_token %}
+        <div class="form-group">
+          <label for="Username">Username</label>
+          <input type="text" name = "username" class="form-control" id="Username" placeholder="Enter Username">
+          
+        </div>
+        <div class="form-group">
+          <label for="Password">Password</label>
+          <input type="password" class="form-control" name="password" id="Password" placeholder="Enter Password">
+        </div>
+          
+        <button  type="submit" class="btn btn-primary">Log In</button>
+        <br>
+        {% if user_notfound == "True" %}
+        <div class="alert alert-danger" role="alert">
+          User doesn't Exist.
+        </div>
+        {% endif %}
+      </form>
+
+
+
+
+      {% endblock %}

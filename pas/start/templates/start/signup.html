@@ -1,0 +1,42 @@
+{% extends 'start/base.html' %}
+
+{% block signup %}
+<title>Sign Up</title>
+
+    <form action="/signup/" method="POST">
+      {% csrf_token %}
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="Password">Password</label>
+            <input type="password" name="password" class="form-control" id="Password" placeholder="Password">
+          </div>
+        </div>
+        <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="Number">Mobile Number</label>
+          <input type="text" class="form-control" name="number" id="Number" placeholder="Mobile Number">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="Email">Email ID</label>
+          <input type="email" name="email" class="form-control" id="Email" placeholder="Email Address">
+        </div>
+        </div>
+        <select class="form-select" aria-label="Default select example" name="profession">
+          <option selected>Are you a teacher or student?</option>
+          <option value="Teacher">Teacher</option>
+          <option value="Student">Student</option>
+        </select>
+        
+
+
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+        
+      </form>
+
+      
+
+{% endblock %}
