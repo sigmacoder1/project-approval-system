@@ -14,5 +14,6 @@ Framework - DJango
 
 ****Thanks****
 
-***Developer:
+***Developer:***
 *AYUSH RAJ*
+
